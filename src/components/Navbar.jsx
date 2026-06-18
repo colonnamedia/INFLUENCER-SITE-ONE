@@ -1,0 +1,53 @@
+import { useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
+import { CREATOR } from '../lib/seed.js'
+
+const NAV = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/about', label: 'About' },
+  { to: '/links', label: 'Links' },
+  { to: '/book', label: 'Book' },
+  { to: '/contact', label: 'Contact' },
+]
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false)
+  return (
+    <nav className="nav">
+      <div className="wrap nav__inner">
+        <Link to="/" className="nav__brand" onClick={() => setOpen(false)}>
+          <span className="nav__brand-dot" />
+          {CREATOR.name}
+        </Link>
+
+        <button
+          className="nav__toggle"
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span /><span /><span />
+        </button>
+
+        <div className={`nav__links ${open ? 'is-open' : ''}`}>
+          {NAV.map((n) => (
+            <NavLink
+              key={n.to}
+              to={n.to}
+              end={n.end}
+              className={({ isActive }) => `nav__link ${isActive ? 'is-active' : ''}`}
+              onClick={() => setOpen(false)}
+            >
+              {n.label}
+            </NavLink>
+          ))}
+          <span className="nav__cta-wrap">
+            <Link to="/book" className="btn btn--sm btn--coral" onClick={() => setOpen(false)}>
+              Book a session
+            </Link>
+          </span>
+        </div>
+      </div>
+    </nav>
+  )
+}
