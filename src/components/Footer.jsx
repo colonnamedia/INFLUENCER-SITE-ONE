@@ -16,7 +16,7 @@ export default function Footer() {
           <h4>Explore</h4>
           <Link to="/about">About</Link>
           <Link to="/links">Links</Link>
-          <Link to="/book">Book a session</Link>
+          <Link to="/book">Book a shoot</Link>
           <Link to="/contact">Contact</Link>
         </div>
         <div>

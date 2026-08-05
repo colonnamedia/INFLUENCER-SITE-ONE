@@ -1,103 +1,121 @@
-// All the "creator" copy and demo content lives here so a buyer can
-// rebrand the whole site by editing one file.
+// All studio copy and demo content lives here so a buyer can rebrand the
+// whole site by editing one file.
+//
+// Images live in /public/images and are referenced by absolute path (e.g.
+// "/images/hero.jpg"). Drop your own photos in with the same names — or point
+// these fields at any hosted URL (Cloudinary, etc.) — and they just work.
 
 export const CREATOR = {
-  name: 'Remy Vale',
-  role: 'Photographer & Creator',
-  handle: '@remyvale',
-  tagline: 'Light, motion, and a little bit of magic.',
+  name: 'Northlight Studio',
+  role: 'Content & Media Studio',
+  handle: '@northlightstudio',
+  tagline: 'Photography and video for the local businesses, weddings, and events that make a place feel like home.',
   location: 'Pittsburgh, PA',
-  email: 'hello@remyvale.com',
-  avatar: 'https://picsum.photos/seed/remy-portrait/320/320',
-  heroPhoto: 'https://picsum.photos/seed/remy-hero/900/1125',
-  bioPhoto: 'https://picsum.photos/seed/remy-bio/900/900',
-  bookPhoto: 'https://picsum.photos/seed/remy-book/900/900',
+  email: 'hello@northlightstudio.com',
+  avatar: '/images/logo.jpg',
+  heroPhoto: '/images/hero.jpg',
+  bioPhoto: '/images/about.jpg',
+  bookPhoto: '/images/book.jpg',
   socials: ['Instagram', 'TikTok', 'YouTube', 'Pinterest'],
 }
 
-// Selling points shown on the home page — these are the "amenities"
-// you're pitching to creators who currently live on Linktree.
+// What the studio offers — shown on the home page.
 export const FEATURES = [
   {
-    title: 'Your own links page',
-    body: 'A Linktree-style hub that lives on your domain, not a rented page. Pinned covers, photo thumbnails, and you control every link.',
+    title: 'Brand & business',
+    body: 'Photo and video that make local shops, restaurants, and professionals look as good online as they do in person.',
   },
   {
-    title: 'Built-in booking',
-    body: 'Let clients request sessions straight from your site. Inquiries land in your inbox and your private dashboard automatically.',
+    title: 'Weddings',
+    body: 'Documentary-style films and photography that capture the whole day — the vows, the toasts, and everything between.',
   },
   {
-    title: 'A real portfolio',
-    body: 'Show your work the way it deserves — full-bleed imagery and an about page that actually sounds like you.',
+    title: 'Events',
+    body: 'Launches, markets, fundraisers, live music. We capture the room as it actually feels, start to finish.',
   },
   {
-    title: 'You own the audience',
-    body: 'Your domain, your email list, your analytics. No algorithm deciding who sees your link.',
+    title: 'Social content',
+    body: 'Reels and short-form built for the feed — a half-day shoot that keeps your grid full for a month.',
   },
   {
-    title: 'Edit it yourself',
-    body: 'A simple admin panel. Add a link, upload a cover, pin a feature — no developer, no monthly link tax.',
+    title: 'Product & food',
+    body: 'Bright, appetizing stills that sell the plate and the product, ready for menus, sites, and ads.',
   },
   {
-    title: 'Made to convert',
-    body: 'Every page points somewhere: to a booking, a shop, a follow. Designed to turn visitors into clients.',
+    title: 'Same-week delivery',
+    body: 'A local studio with local turnaround. Your gallery lands in days, not the month everyone else makes you wait.',
   },
 ]
 
-export const MARQUEE = ['Editorial', 'Brand Work', 'Weddings', 'Portraits', 'Travel', 'Content Days']
+export const MARQUEE = ['Local Business', 'Weddings', 'Events', 'Brand Films', 'Reels', 'Portraits']
 
-// Demo links — shown when the backend has no data yet.
+// Selected work — a categorized portfolio. Categories drive the home-page filter.
+// (Use 'Business', 'Weddings', or 'Events'.)
+export const PORTFOLIO = [
+  { id: 'w1', title: 'Corner Bakery — Brand Refresh', category: 'Business', image: '/images/portfolio/business-bakery.jpg' },
+  { id: 'w2', title: 'Maya & Theo — Riverside Wedding', category: 'Weddings', image: '/images/portfolio/wedding-riverside.jpg' },
+  { id: 'w3', title: 'Summer Night Market', category: 'Events', image: '/images/portfolio/event-market.jpg' },
+  { id: 'w4', title: 'Ironline Barbershop', category: 'Business', image: '/images/portfolio/business-barber.jpg' },
+  { id: 'w5', title: 'Priya & Sam — Vineyard Ceremony', category: 'Weddings', image: '/images/portfolio/wedding-vineyard.jpg' },
+  { id: 'w6', title: 'Gallery Opening Night', category: 'Events', image: '/images/portfolio/event-gallery.jpg' },
+  { id: 'w7', title: 'Bloom Floral Co. — Product', category: 'Business', image: '/images/portfolio/business-floral.jpg' },
+  { id: 'w8', title: 'The Rooftop Reception', category: 'Weddings', image: '/images/portfolio/wedding-rooftop.jpg' },
+  { id: 'w9', title: 'Fall Charity 5K', category: 'Events', image: '/images/portfolio/event-5k.jpg' },
+]
+
+// Demo links — shown when the backend has no data yet. Once you connect the
+// database and add links in the admin, those replace these.
 export const SEED_LINKS = [
   {
     id: 's1',
-    title: 'Spring Editorial — Full Gallery',
-    subtitle: 'My favorite shoot of the year',
-    url: 'https://example.com/spring-editorial',
-    image: 'https://picsum.photos/seed/edit-spring/640/400',
+    title: 'See Our Work — Full Portfolio',
+    subtitle: 'Business, weddings & events',
+    url: 'https://example.com/portfolio',
+    image: '/images/links/work.jpg',
     pinned: true,
     position: 0,
   },
   {
     id: 's2',
-    title: 'Book a Session',
-    subtitle: 'Portraits, brand & editorial',
+    title: 'Book a Shoot',
+    subtitle: 'Check dates & packages',
     url: 'https://example.com/book',
-    image: 'https://picsum.photos/seed/book-cover/640/400',
+    image: '/images/links/book.jpg',
     pinned: true,
     position: 1,
   },
   {
     id: 's3',
     title: 'Instagram',
-    subtitle: '@remyvale · 84k followers',
+    subtitle: '@northlightstudio · daily work',
     url: 'https://instagram.com',
-    image: 'https://picsum.photos/seed/ig-thumb/200/200',
+    image: '/images/links/instagram.jpg',
     pinned: false,
     position: 2,
   },
   {
     id: 's4',
-    title: 'The Contact Sheet — Newsletter',
-    subtitle: 'Behind every shoot, twice a month',
-    url: 'https://example.com/newsletter',
-    image: 'https://picsum.photos/seed/news-thumb/200/200',
+    title: 'Latest Wedding Film',
+    subtitle: 'Watch the highlight reel',
+    url: 'https://example.com/film',
+    image: '/images/links/film.jpg',
     pinned: false,
     position: 3,
   },
   {
     id: 's5',
-    title: 'Print Shop',
-    subtitle: 'Limited fine-art prints',
-    url: 'https://example.com/shop',
-    image: 'https://picsum.photos/seed/shop-thumb/200/200',
+    title: 'Google Reviews',
+    subtitle: '5.0 from local clients',
+    url: 'https://google.com',
+    image: '/images/links/reviews.jpg',
     pinned: false,
     position: 4,
   },
   {
     id: 's6',
-    title: 'YouTube — Behind the Lens',
-    subtitle: 'Gear, edits & shoot vlogs',
-    url: 'https://youtube.com',
+    title: 'Rate Sheet (PDF)',
+    subtitle: 'Packages & à la carte pricing',
+    url: 'https://example.com/rates.pdf',
     image: '',
     pinned: false,
     position: 5,

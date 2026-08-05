@@ -6,7 +6,7 @@ const NAV = [
   { to: '/', label: 'Home', end: true },
   { to: '/about', label: 'About' },
   { to: '/links', label: 'Links' },
-  { to: '/book', label: 'Book' },
+  { to: "/book", label: "Book" },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -43,7 +43,7 @@ export default function Navbar() {
           ))}
           <span className="nav__cta-wrap">
             <Link to="/book" className="btn btn--sm btn--coral" onClick={() => setOpen(false)}>
-              Book a session
+              Book a shoot
             </Link>
           </span>
         </div>

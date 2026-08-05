@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { CREATOR } from '../lib/seed.js'
 import { api } from '../lib/api.js'
 
-const EMPTY = { name: '', email: '', projectType: 'Brand Day', message: '' }
+const EMPTY = { name: '', email: '', projectType: 'Business / brand', message: '' }
 
 export default function Contact() {
   const [form, setForm] = useState(EMPTY)
@@ -18,7 +18,7 @@ export default function Contact() {
     setStatus({ state: 'sending', msg: '' })
     try {
       await api.submitLead(form)
-      setStatus({ state: 'ok', msg: "Got it — your inquiry is on its way. I'll be in touch within a day." })
+      setStatus({ state: 'ok', msg: "Got it — your inquiry is on its way. We'll be in touch within a day." })
       setForm(EMPTY)
     } catch (err) {
       setStatus({ state: 'err', msg: err.message })
@@ -30,7 +30,7 @@ export default function Contact() {
       <div className="pagehead">
         <div className="wrap">
           <p className="eyebrow">Contact</p>
-          <h1 className="display" style={{ maxWidth: '16ch' }}>Tell me what you're dreaming up.</h1>
+          <h1 className="display" style={{ maxWidth: '16ch' }}>Tell us what you're planning.</h1>
         </div>
       </div>
 
@@ -38,13 +38,13 @@ export default function Contact() {
         <div className="wrap contact-grid">
           <div>
             <p className="lede">
-              Booking inquiries, collaborations, or just want to say hi — this form lands straight in my inbox.
-              The more you tell me about your project, the better I can help.
+              Booking inquiries, collaborations, or just want to say hi — this form lands straight in our inbox.
+              The more you tell us about your project, the better we can help.
             </p>
             <div className="mt-m">
               <p className="eyebrow">Direct</p>
               <a href={`mailto:${CREATOR.email}`} style={{ color: 'var(--indigo)', fontWeight: 600 }}>{CREATOR.email}</a>
-              <p style={{ color: 'var(--muted)', marginTop: 18 }}>{CREATOR.location} · available worldwide</p>
+              <p style={{ color: 'var(--muted)', marginTop: 18 }}>{CREATOR.location} · available for travel</p>
             </div>
           </div>
 
@@ -63,15 +63,16 @@ export default function Contact() {
             <div className="field">
               <label htmlFor="type">Project type</label>
               <select id="type" value={form.projectType} onChange={set('projectType')}>
-                <option>The Mini</option>
-                <option>Brand Day</option>
-                <option>Editorial</option>
+                <option>Business / brand</option>
                 <option>Wedding</option>
+                <option>Event</option>
+                <option>Social content</option>
+                <option>Product / food</option>
                 <option>Something else</option>
               </select>
             </div>
             <div className="field">
-              <label htmlFor="message">Tell me about it</label>
+              <label htmlFor="message">Tell us about it</label>
               <textarea id="message" value={form.message} onChange={set('message')} placeholder="Dates, vibe, what you need…" />
             </div>
             <button className="btn btn--coral" style={{ width: '100%', justifyContent: 'center' }} onClick={submit} disabled={status.state === 'sending'}>

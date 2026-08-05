@@ -4,23 +4,23 @@ import { ArrowUpRight } from '../components/Icons.jsx'
 
 const PACKAGES = [
   {
-    name: 'The Mini',
-    price: '$350',
-    blurb: 'A focused 45-minute session. Perfect for headshots, a content refresh, or a single look.',
-    items: ['45-minute session', '1 location', '15 edited images', '48-hour gallery'],
+    name: 'Brand Session',
+    price: '$650',
+    blurb: 'A focused half-day for local businesses — photo and short-form video to fill your site and feed.',
+    items: ['2–3 hour session', '1 location', '40 edited photos', '3 social reels', 'Usage rights'],
   },
   {
-    name: 'The Brand Day',
-    price: '$950',
-    blurb: 'A half-day built for creators and small brands who need a library of content to last.',
-    items: ['4-hour session', 'Up to 3 looks/locations', '60 edited images', 'Reels & stills', 'Usage rights'],
+    name: 'Wedding Day',
+    price: '$2,800',
+    blurb: 'Full film and photography coverage for the whole day, from first look to last dance.',
+    items: ['8 hours coverage', 'Two shooters', 'Highlight film', '400+ edited photos', 'Online gallery'],
     featured: true,
   },
   {
-    name: 'The Editorial',
-    price: "Let's talk",
-    blurb: 'Full-scale concepting and production for campaigns, lookbooks, and editorial features.',
-    items: ['Concept & moodboard', 'Full production day', 'Team coordination', 'Delivery to spec'],
+    name: 'Event Coverage',
+    price: 'From $500',
+    blurb: 'Launches, markets, fundraisers, and live events — captured as they happen, priced by the hour.',
+    items: ['Hourly coverage', 'Photo and/or video', 'Fast social clips', 'Full edited gallery'],
   },
 ]
 
@@ -29,8 +29,8 @@ export default function Book() {
     <>
       <div className="pagehead">
         <div className="wrap">
-          <p className="eyebrow">Book a session</p>
-          <h1 className="display" style={{ maxWidth: '16ch' }}>Pick a package. Pick a date. Let's shoot.</h1>
+          <p className="eyebrow">Book a shoot</p>
+          <h1 className="display" style={{ maxWidth: '18ch' }}>Pick a package. Pick a date. Let's shoot.</h1>
         </div>
       </div>
 
@@ -61,8 +61,8 @@ export default function Book() {
 
       <section className="section section--tight center" style={{ background: 'var(--paper-2)' }}>
         <div className="wrap">
-          <h2 className="display" style={{ maxWidth: '18ch', margin: '0 auto' }}>Not sure which is right? Tell me about your project.</h2>
-          <p className="lede" style={{ margin: '16px auto 0' }}>I reply to every inquiry within a day, {CREATOR.name.split(' ')[0]} promise.</p>
+          <h2 className="display" style={{ maxWidth: '20ch', margin: '0 auto' }}>Not sure which fits? Tell us about your project.</h2>
+          <p className="lede" style={{ margin: '16px auto 0' }}>We reply to every inquiry within a day.</p>
           <Link to="/contact" className="btn btn--coral mt-m">Send an inquiry <ArrowUpRight /></Link>
         </div>
       </section>

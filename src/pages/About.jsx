@@ -8,7 +8,7 @@ export default function About() {
       <div className="pagehead">
         <div className="wrap">
           <p className="eyebrow">About</p>
-          <h1 className="display" style={{ maxWidth: '14ch' }}>The person behind the lens.</h1>
+          <h1 className="display" style={{ maxWidth: '16ch' }}>A local studio for local stories.</h1>
         </div>
       </div>
 
@@ -19,20 +19,19 @@ export default function About() {
           </div>
           <div>
             <p className="lede">
-              I'm {CREATOR.name} — a {CREATOR.role.toLowerCase()} based in {CREATOR.location}.
-              For the last decade I've been chasing the kind of light that makes people stop scrolling.
+              We're {CREATOR.name} — a content and media studio based in {CREATOR.location}, shooting for the
+              small businesses, couples, and community events that give this place its character.
             </p>
             <p style={{ color: 'var(--ink-soft)', marginTop: 18 }}>
-              My work sits somewhere between editorial and documentary: honest, a little cinematic, never stiff.
-              I shoot brands, creators, and the occasional wedding when the story's right. Whatever the project,
-              the goal is the same — images that feel like you on your best day.
+              Our work sits somewhere between editorial and documentary: honest, a little cinematic, never stiff.
+              One week it's a bakery's brand refresh, the next it's a riverside wedding or a packed night market.
+              Whatever the project, the goal is the same — images and video that feel like the real thing on its best day.
             </p>
             <p style={{ color: 'var(--ink-soft)', marginTop: 18 }}>
-              When I'm not behind the camera, I'm probably writing The Contact Sheet, my twice-monthly
-              newsletter about the craft, or teaching workshops for creators who want to take their own
-              brand seriously.
+              Because we're local, you get a real person on the phone, a fast turnaround, and someone who
+              actually knows the venues, the light, and the neighborhoods your story lives in.
             </p>
-            <Link to="/book" className="btn mt-m">Work with me <ArrowUpRight /></Link>
+            <Link to="/book" className="btn mt-m">Work with us <ArrowUpRight /></Link>
           </div>
         </div>
       </section>
@@ -42,8 +41,8 @@ export default function About() {
           <div className="features__grid">
             {[
               { k: '10+ yrs', v: 'Behind the camera' },
-              { k: '300+', v: 'Brands & creators shot' },
-              { k: '84k', v: 'Following across platforms' },
+              { k: '300+', v: 'Local shoots delivered' },
+              { k: '5.0★', v: 'Across local reviews' },
             ].map((s) => (
               <article className="feature" key={s.v} style={{ textAlign: 'center' }}>
                 <div className="display" style={{ fontSize: '2.6rem', color: 'var(--coral)' }}>{s.k}</div>

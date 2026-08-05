@@ -1,16 +1,20 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { CREATOR, FEATURES, MARQUEE } from '../lib/seed.js'
+import { CREATOR, FEATURES, MARQUEE, PORTFOLIO } from '../lib/seed.js'
 import { api } from '../lib/api.js'
 import { PinnedCard, LinkRow } from '../components/LinkCard.jsx'
 import { ArrowUpRight } from '../components/Icons.jsx'
 
+const CATS = ['All', 'Business', 'Weddings', 'Events']
+
 export default function Home() {
   const [links, setLinks] = useState([])
+  const [cat, setCat] = useState('All')
   useEffect(() => { api.getLinks().then(setLinks) }, [])
 
   const pinned = links.filter((l) => l.pinned).slice(0, 2)
   const rows = links.filter((l) => !l.pinned).slice(0, 3)
+  const work = cat === 'All' ? PORTFOLIO : PORTFOLIO.filter((p) => p.category === cat)
 
   return (
     <>
@@ -20,17 +24,17 @@ export default function Home() {
           <div>
             <p className="eyebrow">{CREATOR.role} · {CREATOR.location}</p>
             <h1 className="hero__name">
-              {CREATOR.name.split(' ')[0]} <em>{CREATOR.name.split(' ')[1]}</em>
+              {CREATOR.name.split(' ')[0]} <em>{CREATOR.name.split(' ').slice(1).join(' ')}</em>
             </h1>
-            <p className="hero__sub lede">{CREATOR.tagline} A home for my work, my bookings, and every link worth following — all in one place I actually own.</p>
+            <p className="hero__sub lede">{CREATOR.tagline} One local team for the photo and video your business, your wedding, or your event deserves.</p>
             <div className="hero__cta-row">
-              <Link to="/links" className="btn">Every link <ArrowUpRight /></Link>
-              <Link to="/book" className="btn btn--ghost">Book a session</Link>
+              <a href="#work" className="btn">See our work <ArrowUpRight /></a>
+              <Link to="/book" className="btn btn--ghost">Book a shoot</Link>
             </div>
           </div>
           <div className="hero__media">
             <img className="hero__photo" src={CREATOR.heroPhoto} alt={`${CREATOR.name}, ${CREATOR.role}`} />
-            <span className="hero__badge">Booking · Summer 2026</span>
+            <span className="hero__badge">Now booking · 2026</span>
           </div>
         </div>
       </header>
@@ -44,12 +48,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Amenities / what's included */}
+      {/* Services */}
       <section className="section">
         <div className="wrap">
           <div className="features__head">
-            <p className="eyebrow">Why your own site</p>
-            <h2 className="display">Everything a link-in-bio can't give you.</h2>
+            <p className="eyebrow">What we shoot</p>
+            <h2 className="display">One studio for every kind of story.</h2>
           </div>
           <div className="features__grid">
             {FEATURES.map((f, i) => (
@@ -63,18 +67,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Portfolio */}
+      <section className="section section--tight" id="work" style={{ background: 'var(--paper-2)' }}>
+        <div className="wrap">
+          <div className="features__head" style={{ marginBottom: 30 }}>
+            <p className="eyebrow">Selected work</p>
+            <h2 className="display">Local businesses, weddings & the moments between.</h2>
+          </div>
+          <div className="portfolio__filters">
+            {CATS.map((c) => (
+              <button key={c} className={`filter-btn ${cat === c ? 'is-active' : ''}`} onClick={() => setCat(c)}>{c}</button>
+            ))}
+          </div>
+          <div className="portfolio-grid">
+            {work.map((p) => (
+              <div className="work" key={p.id}>
+                <img src={p.image} alt={p.title} loading="lazy" />
+                <div className="work__overlay">
+                  <span className="work__cat">{p.category}</span>
+                  <span className="work__title">{p.title}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Links preview */}
-      <section className="section section--tight" style={{ background: 'var(--paper-2)' }}>
+      <section className="section">
         <div className="wrap">
           <div className="split">
             <div>
-              <p className="eyebrow">The links page</p>
-              <h2 className="display">Your link hub, reimagined.</h2>
+              <p className="eyebrow">Everything in one place</p>
+              <h2 className="display">Our work, reviews & booking — one link.</h2>
               <p className="lede mt-s">
-                Pinned covers for what matters most. Photo thumbnails so every link is recognizable.
-                It lives on your domain and you update it yourself in seconds.
+                A tidy link hub that lives on our own domain: the full portfolio, the latest wedding film,
+                reviews, and booking, all in one page we update ourselves in seconds.
               </p>
-              <Link to="/links" className="btn mt-m">See it live <ArrowUpRight /></Link>
+              <Link to="/links" className="btn mt-m">Open the hub <ArrowUpRight /></Link>
             </div>
             <div>
               {pinned.length > 0 && (
@@ -89,11 +119,11 @@ export default function Home() {
       </section>
 
       {/* Booking CTA */}
-      <section className="section">
-        <div className="wrap center">
-          <p className="eyebrow" style={{ justifyContent: 'center' }}>Currently booking</p>
-          <h2 className="display" style={{ maxWidth: '16ch', margin: '0 auto' }}>
-            Let's make something worth keeping.
+      <section className="section section--tight center" style={{ background: 'var(--paper-2)' }}>
+        <div className="wrap">
+          <p className="eyebrow" style={{ justifyContent: 'center' }}>Now booking</p>
+          <h2 className="display" style={{ maxWidth: '18ch', margin: '0 auto' }}>
+            Let's capture what you're building.
           </h2>
           <div className="hero__cta-row" style={{ justifyContent: 'center', marginTop: 28 }}>
             <Link to="/book" className="btn btn--coral">Start a project <ArrowUpRight /></Link>
