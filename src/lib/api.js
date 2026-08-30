@@ -2,7 +2,7 @@
 // Public link fetching falls back to seed data so the site still demos
 // nicely before the database/backend is wired up.
 
-import { SEED_LINKS } from './seed.js'
+import { SEED_LINKS, GALLERY } from './seed.js'
 
 const TOKEN_KEY = 'creator_admin_token'
 
@@ -35,10 +35,22 @@ export const api = {
   async getLinks() {
     try {
       const data = await request('/links')
-      // If the DB is empty, show the seed so a fresh deploy still looks alive.
       return data.links && data.links.length ? data.links : SEED_LINKS
     } catch {
-      return SEED_LINKS // backend not configured yet — demo mode
+      return SEED_LINKS
+    }
+  },
+  async getGallerySettings() {
+    try {
+      const data = await request('/gallery-settings')
+      const saved = data.settings || {}
+      return {
+        ...GALLERY,
+        ...saved,
+        images: saved.images && saved.images.length ? saved.images : GALLERY.images,
+      }
+    } catch {
+      return GALLERY
     }
   },
   submitLead(body) {
@@ -63,6 +75,9 @@ export const api = {
   },
   reorderLinks(order) {
     return request('/links/reorder', { method: 'POST', body: { order }, authed: true })
+  },
+  saveGallerySettings(body) {
+    return request('/gallery-settings', { method: 'PUT', body, authed: true })
   },
   getLeads() {
     return request('/leads', { authed: true })

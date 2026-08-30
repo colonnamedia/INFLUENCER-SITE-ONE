@@ -5,6 +5,7 @@ import App from './App.jsx'
 import './index.css'
 import './creator.css'
 import './creator-pages.css'
+import './creator-bold.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
