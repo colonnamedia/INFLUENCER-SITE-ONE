@@ -1,6 +1,16 @@
+import { useEffect, useState } from 'react'
 import { GALLERY } from '../lib/seed.js'
+import { api } from '../lib/api.js'
 
 export default function Gallery() {
+  const [gallery, setGallery] = useState(GALLERY)
+
+  useEffect(() => {
+    api.getGallerySettings().then(setGallery)
+  }, [])
+
+  const showEmbed = gallery.mode === 'embed' && gallery.embedUrl
+
   return (
     <>
       <section className="creator-gallery-hero">
@@ -13,10 +23,10 @@ export default function Gallery() {
 
       <section className="section creator-gallery-section">
         <div className="wrap">
-          {GALLERY.embedUrl ? (
+          {showEmbed ? (
             <div className="creator-gallery-embed">
               <iframe
-                src={GALLERY.embedUrl}
+                src={gallery.embedUrl}
                 title="Creator gallery"
                 loading="lazy"
                 allowFullScreen
@@ -25,13 +35,13 @@ export default function Gallery() {
           ) : (
             <>
               <div className="creator-gallery-note">
-                <strong>Gallery integration ready.</strong>
-                <span>{GALLERY.embedLabel}</span>
+                <strong>Creator gallery</strong>
+                <span>{gallery.embedLabel}</span>
               </div>
               <div className="creator-gallery-grid">
-                {GALLERY.images.map((image, index) => (
+                {gallery.images.map((image, index) => (
                   <figure className={`creator-gallery-item creator-gallery-item--${(index % 3) + 1}`} key={`${image.src}-${index}`}>
-                    <img src={image.src} alt={image.alt} loading="lazy" />
+                    <img src={image.src} alt={image.alt || 'Creator gallery image'} loading="lazy" />
                   </figure>
                 ))}
               </div>
