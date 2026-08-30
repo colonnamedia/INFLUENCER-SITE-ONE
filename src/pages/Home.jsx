@@ -6,9 +6,9 @@ import { PinnedCard, LinkRow } from '../components/LinkCard.jsx'
 import { ArrowUpRight } from '../components/Icons.jsx'
 
 const STATS = [
-  ['125K+', 'community'],
-  ['4.8M', 'monthly views'],
-  ['7.2%', 'avg. engagement'],
+  ['Photo + Video', 'content'],
+  ['Social First', 'ready to share'],
+  ['Any Occasion', 'business to weddings'],
 ]
 
 export default function Home() {
@@ -24,11 +24,11 @@ export default function Home() {
         <div className="wrap creator-hero__grid">
           <div className="creator-hero__copy">
             <span className="creator-kicker">{CREATOR.role}</span>
-            <h1>Content that feels <em>human.</em></h1>
+            <h1>Content that makes you <em>stand out.</em></h1>
             <p>{CREATOR.tagline}</p>
             <div className="creator-hero__actions">
-              <Link to="/gallery" className="btn creator-primary">View the gallery <ArrowUpRight /></Link>
-              <Link to="/book" className="btn btn--ghost creator-secondary">Work with me</Link>
+              <Link to="/gallery" className="btn creator-primary">View our work <ArrowUpRight /></Link>
+              <Link to="/book" className="btn btn--ghost creator-secondary">Start a project</Link>
             </div>
             <div className="creator-stats">
               {STATS.map(([value, label]) => (
@@ -37,11 +37,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="creator-showcase creator-showcase--photo" aria-label="Creator content preview">
+          <div className="creator-showcase creator-showcase--photo" aria-label="Content creation preview">
             <div className="creator-photo-stack">
-              <img className="creator-photo-stack__main" src={CREATOR.heroPhoto} alt="Content creator filming social content" />
-              <img className="creator-photo-stack__small" src={CREATOR.bioPhoto} alt="Lifestyle creator filming with a camera" />
-              <div className="creator-photo-stack__label"><span>Featured</span><strong>Creator campaign</strong><small>UGC · lifestyle · social</small></div>
+              <img className="creator-photo-stack__main" src={CREATOR.heroPhoto} alt="Professional content creation for businesses and special occasions" />
+              <img className="creator-photo-stack__small" src={CREATOR.bioPhoto} alt="Creator filming photo and video content" />
+              <div className="creator-photo-stack__label"><span>Featured</span><strong>Content creation</strong><small>business · social · events</small></div>
             </div>
           </div>
         </div>
@@ -56,9 +56,9 @@ export default function Home() {
       <section className="section creator-services">
         <div className="wrap">
           <div className="creator-section-head">
-            <span className="creator-kicker">Create · connect · convert</span>
-            <h2>Built for brands. Made for people.</h2>
-            <p>From a one-off UGC asset to a long-term partnership, the template gives a creator room to show personality, credibility and what they actually offer.</p>
+            <span className="creator-kicker">Create · capture · share</span>
+            <h2>Your business. Your event. Your story.</h2>
+            <p>From everyday social content and business campaigns to weddings, launches and special occasions, we create polished photo and video content built to look great everywhere you share it.</p>
           </div>
           <div className="creator-service-grid">
             {FEATURES.map((f, i) => (
@@ -75,9 +75,9 @@ export default function Home() {
       <section className="section creator-links-preview">
         <div className="wrap creator-links-preview__grid">
           <div>
-            <span className="creator-kicker">One link. Your whole world.</span>
-            <h2>More than a Linktree.</h2>
-            <p>Your own branded link hub for products, affiliate links, social channels, media kits, launches and whatever you want people to find next.</p>
+            <span className="creator-kicker">Everything in one place.</span>
+            <h2>Explore more.</h2>
+            <p>Keep your latest work, social channels, booking links, media kit and featured projects together in one branded link hub.</p>
             <Link to="/links" className="creator-text-link">Open the link hub <ArrowUpRight /></Link>
           </div>
           <div className="creator-link-stack">
@@ -90,10 +90,10 @@ export default function Home() {
 
       <section className="creator-collab">
         <div className="wrap creator-collab__inner">
-          <span className="creator-kicker">Let’s make something worth watching</span>
-          <h2>Have a product, place or story that fits?</h2>
-          <p>Tell me what you’re building and what you want the audience to feel, remember or do.</p>
-          <Link to="/book" className="btn creator-primary">Start a collaboration <ArrowUpRight /></Link>
+          <span className="creator-kicker">Let’s create something memorable</span>
+          <h2>Need content for your business or a special occasion?</h2>
+          <p>Tell us what you’re planning and we’ll help create content that looks polished, feels current and is ready to share.</p>
+          <Link to="/book" className="btn creator-primary">Start a project <ArrowUpRight /></Link>
         </div>
       </section>
     </>
