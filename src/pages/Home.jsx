@@ -27,7 +27,7 @@ export default function Home() {
             <h1>Content that feels <em>human.</em></h1>
             <p>{CREATOR.tagline}</p>
             <div className="creator-hero__actions">
-              <Link to="/links" className="btn creator-primary">Explore my links <ArrowUpRight /></Link>
+              <Link to="/gallery" className="btn creator-primary">View the gallery <ArrowUpRight /></Link>
               <Link to="/book" className="btn btn--ghost creator-secondary">Work with me</Link>
             </div>
             <div className="creator-stats">
@@ -37,17 +37,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="creator-showcase" aria-label="Creator content preview">
-            <div className="creator-phone">
-              <div className="creator-phone__top"><span>{CREATOR.handle}</span><span>•••</span></div>
-              <div className="creator-phone__visual creator-gradient-one">
-                <span className="creator-phone__tag">DAY IN MY LIFE</span>
-                <strong>real life,<br/>better stories.</strong>
-              </div>
-              <div className="creator-phone__meta"><b>24.8K</b> likes <span>View comments</span></div>
+          <div className="creator-showcase creator-showcase--photo" aria-label="Creator content preview">
+            <div className="creator-photo-stack">
+              <img className="creator-photo-stack__main" src={CREATOR.heroPhoto} alt="Content creator filming social content" />
+              <img className="creator-photo-stack__small" src={CREATOR.bioPhoto} alt="Lifestyle creator filming with a camera" />
+              <div className="creator-photo-stack__label"><span>Featured</span><strong>Creator campaign</strong><small>UGC · lifestyle · social</small></div>
             </div>
-            <div className="creator-float creator-float--one"><span>NEW</span><b>Brand campaign</b><small>story · reel · UGC</small></div>
-            <div className="creator-float creator-float--two"><b>+38%</b><small>save rate this month</small></div>
           </div>
         </div>
       </header>
