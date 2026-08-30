@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { CREATOR } from '../lib/seed.js'
+import { SITE_TITLE } from '../lib/seed.js'
 
 const NAV = [
   { to: '/', label: 'Home', end: true },
   { to: '/about', label: 'About' },
+  { to: '/gallery', label: 'Gallery' },
   { to: '/links', label: 'Links' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -15,8 +16,8 @@ export default function Navbar() {
     <nav className="nav creator-nav">
       <div className="wrap nav__inner">
         <Link to="/" className="nav__brand creator-brand" onClick={() => setOpen(false)}>
-          <span className="creator-brand__mark">ML</span>
-          <span>{CREATOR.name}</span>
+          <span className="creator-brand__mark">IC</span>
+          <span>{SITE_TITLE}</span>
         </Link>
 
         <button className="nav__toggle" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
