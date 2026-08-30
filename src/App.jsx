@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
+import Gallery from './pages/Gallery.jsx'
 import Links from './pages/Links.jsx'
 import Book from './pages/Book.jsx'
 import Contact from './pages/Contact.jsx'
@@ -39,6 +40,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
         <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
+        <Route path="/gallery" element={<PublicLayout><Gallery /></PublicLayout>} />
         <Route path="/links" element={<PublicLayout><Links /></PublicLayout>} />
         <Route path="/book" element={<PublicLayout><Book /></PublicLayout>} />
         <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
