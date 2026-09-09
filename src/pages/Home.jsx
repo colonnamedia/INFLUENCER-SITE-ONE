@@ -5,11 +5,22 @@ import { api } from '../lib/api.js'
 import { PinnedCard, LinkRow } from '../components/LinkCard.jsx'
 import { ArrowUpRight } from '../components/Icons.jsx'
 
-const CREATOR_IMAGES = [
-  { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85', alt: 'Young adult content creator' },
-  { src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85', alt: 'Adult content creator' },
-  { src: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=900&q=85', alt: 'Professional creator' },
-  { src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=85', alt: 'Lifestyle content creator' },
+const BRAND_COLLABORATIONS = [
+  { name: 'NIKE', className: 'creator-brand-mark--nike' },
+  { name: 'lululemon', className: 'creator-brand-mark--lululemon' },
+  { name: 'GYMSHARK', className: 'creator-brand-mark--gymshark' },
+  { name: 'alo', className: 'creator-brand-mark--alo' },
+  { name: 'Hydro Flask', className: 'creator-brand-mark--hydro' },
+  { name: 'STANLEY', className: 'creator-brand-mark--stanley' },
+  { name: 'ŌURA', className: 'creator-brand-mark--oura' },
+  { name: 'CLEAN SIMPLE EATS', className: 'creator-brand-mark--cse' },
+  { name: '1st PHORM', className: 'creator-brand-mark--phorm' },
+]
+
+const CREATOR_STATS = [
+  { value: '250K+', label: 'Social reach' },
+  { value: '500+', label: 'Pieces of content' },
+  { value: '100+', label: 'Brands & businesses' },
 ]
 
 export default function Home() {
@@ -24,19 +35,34 @@ export default function Home() {
       <header className="creator-hero">
         <div className="wrap creator-hero__grid">
           <div className="creator-hero__copy">
-            <span className="creator-kicker">Content Creation · Business · Events</span>
+            <span className="creator-kicker">Fitness · Wellness · Lifestyle</span>
             <h1>Content that makes you <em>stand out.</em></h1>
-            <p>Professional content for your business, brand, wedding, event or special occasion — created to look incredible and connect with the people you want to reach.</p>
+            <p>High-energy fitness and lifestyle content made to stop the scroll, build real trust and help the right brands connect with the right audience.</p>
             <div className="creator-hero__actions">
-              <Link to="/gallery" className="btn creator-primary">View our work <ArrowUpRight /></Link>
-              <Link to="/book" className="btn btn--ghost creator-secondary">Create with us</Link>
+              <a href="#collaborations" className="btn creator-primary">View collaborations <ArrowUpRight /></a>
+              <Link to="/book" className="btn btn--ghost creator-secondary">Work with me</Link>
+            </div>
+            <div className="creator-stats" aria-label="Creator highlights">
+              {CREATOR_STATS.map((stat) => (
+                <div className="creator-stat" key={stat.label}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="creator-showcase creator-showcase--image" aria-label="Content creator filming professional social content">
-            <img className="creator-hero-image" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1400&q=90" alt="Content creator producing social media content" />
-            <div className="creator-float creator-float--one"><span>CREATE</span><b>Business + Social</b><small>video · photo · UGC</small></div>
-            <div className="creator-float creator-float--two"><b>Any story.</b><small>Any occasion.</small></div>
+            <img
+              className="creator-hero-image"
+              src="/images/fitness-creator-hero.webp"
+              alt="Fit female creator filming workout content in a modern gym"
+              width="1100"
+              height="1375"
+              fetchPriority="high"
+            />
+            <div className="creator-float creator-float--one"><span>CREATE</span><b>Fitness + Wellness</b><small>video · photo · UGC</small></div>
+            <div className="creator-float creator-float--two"><b>Good content.</b><small>Stronger brands.</small></div>
           </div>
         </div>
       </header>
@@ -47,19 +73,19 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="section creator-ages">
-        <div className="wrap">
-          <div className="creator-section-head">
-            <span className="creator-kicker">Content has no age</span>
-            <h2>Creators for every audience.</h2>
-            <p>Great content can come from every generation. This template is built to showcase creators, entrepreneurs and personalities with different styles, stories and audiences.</p>
+      <section className="section creator-brands" id="collaborations">
+        <div className="wrap creator-brands__layout">
+          <div className="creator-brands__intro">
+            <span className="creator-kicker">Brands I’ve worked with</span>
+            <h2>Trusted by brands that move people.</h2>
+            <p>Authentic fitness, wellness and lifestyle content built for launches, partnerships, organic social and paid campaigns.</p>
+            <Link to="/book" className="btn creator-brands__cta">Let’s create together <ArrowUpRight /></Link>
           </div>
-          <div className="creator-age-grid">
-            {CREATOR_IMAGES.map((image, index) => (
-              <figure className={`creator-age-card creator-age-card--${index + 1}`} key={image.src}>
-                <img src={image.src} alt={image.alt} loading="lazy" />
-                <figcaption>{['Fresh perspective', 'Lifestyle + culture', 'Business + expertise', 'Stories that connect'][index]}</figcaption>
-              </figure>
+          <div className="creator-brand-grid" role="list" aria-label="Selected brand collaborations">
+            {BRAND_COLLABORATIONS.map((brand) => (
+              <div className={`creator-brand-mark ${brand.className}`} role="listitem" key={brand.name}>
+                {brand.name}
+              </div>
             ))}
           </div>
         </div>

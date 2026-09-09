@@ -25,6 +25,10 @@ body { background: var(--creator-cream); color: var(--creator-ink); }
 .creator-hero__copy > p { max-width: 640px; font-size: 1.15rem; color: var(--creator-soft); }
 .creator-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
 .creator-secondary { background: transparent; }
+.creator-stats { display: flex; gap: 34px; flex-wrap: wrap; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--creator-line); }
+.creator-stat { display: grid; gap: 2px; }
+.creator-stat strong { font-size: 1.35rem; letter-spacing: -.04em; }
+.creator-stat span { color: var(--creator-soft); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .creator-showcase { min-height: 620px; position: relative; display: grid; place-items: center; }
 .creator-showcase::before { content: ''; width: 520px; height: 520px; border-radius: 50%; position: absolute; background: radial-gradient(circle at 30% 30%, #ffd96a, #ffb07c 42%, #ff6f91 70%, #b9a7ff); filter: saturate(.9); }
 .creator-showcase--image { padding: 34px; }
@@ -39,14 +43,21 @@ body { background: var(--creator-cream); color: var(--creator-ink); }
 .creator-marquee { background: var(--creator-ink); border: 0; }
 .creator-marquee .marquee__item { color: white; font-family: Inter, system-ui, sans-serif; font-style: normal; font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .creator-marquee .marquee__item::after { color: var(--creator-pink); }
-.creator-ages { background: #f2f2f2; }
-.creator-age-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.creator-age-card { margin: 0; position: relative; min-height: 430px; overflow: hidden; border-radius: 24px; background: #ddd; }
-.creator-age-card:nth-child(even) { transform: translateY(28px); }
-.creator-age-card img { width: 100%; height: 100%; min-height: 430px; object-fit: cover; display: block; transition: transform .4s ease; }
-.creator-age-card:hover img { transform: scale(1.035); }
-.creator-age-card::after { content: ''; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.78)); }
-.creator-age-card figcaption { position: absolute; z-index: 2; left: 22px; right: 22px; bottom: 20px; color: white; font-weight: 800; font-size: 1.05rem; letter-spacing: -.02em; }
+.creator-brands { background: var(--creator-ink); color: white; scroll-margin-top: 70px; }
+.creator-brands__layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 72px; align-items: center; }
+.creator-brands__intro h2 { font-family: Inter, system-ui, sans-serif; font-size: clamp(2.8rem, 6vw, 5.4rem); line-height: .95; letter-spacing: -.06em; margin: 18px 0; }
+.creator-brands__intro p { color: rgba(255,255,255,.68); font-size: 1.08rem; max-width: 570px; margin-bottom: 28px; }
+.creator-brands__cta { background: white; border-color: white; color: var(--creator-ink); }
+.creator-brands__cta:hover { background: var(--creator-pink); border-color: var(--creator-pink); color: var(--creator-ink); }
+.creator-brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.creator-brand-mark { min-height: 118px; display: grid; place-items: center; padding: 20px 14px; border: 1px solid rgba(255,255,255,.15); border-radius: 22px; background: rgba(255,255,255,.055); text-align: center; font-size: 1.05rem; font-weight: 800; letter-spacing: -.02em; transition: transform .2s ease, background .2s ease, color .2s ease; }
+.creator-brand-mark:hover { transform: translateY(-4px); background: var(--creator-pink); color: var(--creator-ink); }
+.creator-brand-mark--nike { font-size: 1.55rem; font-style: italic; letter-spacing: -.08em; }
+.creator-brand-mark--lululemon { font-size: 1.15rem; letter-spacing: -.055em; }
+.creator-brand-mark--gymshark, .creator-brand-mark--oura { letter-spacing: .08em; }
+.creator-brand-mark--alo { font-family: Georgia, serif; font-size: 2rem; font-weight: 400; }
+.creator-brand-mark--hydro { font-size: 1rem; }
+.creator-brand-mark--stanley, .creator-brand-mark--cse, .creator-brand-mark--phorm { font-size: .9rem; letter-spacing: .06em; }
 .creator-services { background: white; }
 .creator-section-head { max-width: 780px; margin-bottom: 52px; }
 .creator-section-head h2, .creator-links-preview h2, .creator-collab h2 { font-family: Inter, system-ui, sans-serif; font-size: clamp(2.8rem, 6vw, 5.4rem); line-height: .95; letter-spacing: -.06em; margin: 18px 0; }
@@ -88,10 +99,10 @@ body { background: var(--creator-cream); color: var(--creator-ink); }
 .creator-linkpage .link-row:hover { transform: translateY(-2px); border-color: var(--creator-ink); }
 .creator-linkpage__footer { text-align: center; padding-top: 22px; font-size: 11px; color: #8a8491; }
 @media (max-width: 900px) {
-  .creator-hero__grid, .creator-links-preview__grid { grid-template-columns: 1fr; }
+  .creator-hero__grid, .creator-links-preview__grid, .creator-brands__layout { grid-template-columns: 1fr; }
   .creator-showcase { min-height: 540px; }
-  .creator-service-grid, .creator-age-grid { grid-template-columns: repeat(2, 1fr); }
-  .creator-age-card:nth-child(even) { transform: none; }
+  .creator-service-grid { grid-template-columns: repeat(2, 1fr); }
+  .creator-brands__layout { gap: 44px; }
 }
 @media (max-width: 620px) {
   .creator-hero { padding-top: 48px; }
@@ -101,8 +112,11 @@ body { background: var(--creator-cream); color: var(--creator-ink); }
   .creator-hero-image { height: 440px; }
   .creator-float--one { left: 0; top: 6%; }
   .creator-float--two { right: 0; bottom: 7%; }
-  .creator-service-grid, .creator-age-grid { grid-template-columns: 1fr; }
-  .creator-age-card, .creator-age-card img { min-height: 390px; }
+  .creator-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .creator-stat strong { font-size: 1.2rem; }
+  .creator-brand-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .creator-brand-mark { min-height: 96px; border-radius: 18px; }
+  .creator-service-grid { grid-template-columns: 1fr; }
   .creator-service { min-height: 205px; }
   .creator-linkpage { padding: 36px 0 60px; }
   .creator-linkpage__card { padding: 22px 16px; border-radius: 26px; }
