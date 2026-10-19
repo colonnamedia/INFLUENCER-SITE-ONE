@@ -121,3 +121,8 @@ body { background: var(--creator-cream); color: var(--creator-ink); }
   .creator-linkpage { padding: 36px 0 60px; }
   .creator-linkpage__card { padding: 22px 16px; border-radius: 26px; }
 }
+
+/* Allow link cards to shrink inside the responsive grid. */
+.creator-links-preview__grid > * { min-width: 0; }
+.creator-link-stack .pinned-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .creator-link-stack .pinned-grid { grid-template-columns: minmax(0, 1fr); } }
