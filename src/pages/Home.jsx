@@ -1,3 +1,4 @@
+import HomepagePhotos from '../HomepagePhotos.jsx';
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { CREATOR, FEATURES, MARQUEE } from '../lib/seed.js'
@@ -73,6 +74,7 @@ export default function Home() {
         </div>
       </div>
 
+      <HomepagePhotos />
       <section className="section creator-brands" id="collaborations">
         <div className="wrap creator-brands__layout">
           <div className="creator-brands__intro">
