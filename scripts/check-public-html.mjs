@@ -1,0 +1,30 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { origin, publicRoutes } from '../src/public-pages.js';
+const decode = value => value.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const seen = new Map();
+for (const [route, meta] of Object.entries(publicRoutes)) {
+ const file = route === '/' ? 'dist/index.html' : `dist${route}/index.html`;
+ const html = await fs.readFile(file, 'utf8');
+ const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] || '';
+ const titles = [...head.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
+ const descriptions = [...head.matchAll(/<meta\b[^>]*name="description"[^>]*content="([^"]*)"[^>]*>/gi)];
+ assert.equal(titles.length, 1, route + ': exactly one title');
+ assert.equal(decode(titles[0][1]), meta.title, route + ': route-specific title');
+ assert.equal(descriptions.length, 1, route + ': exactly one description');
+ assert.equal(decode(descriptions[0][1]), meta.description, route + ': route-specific description');
+ const canonical = origin + (meta.canonicalPath || route);
+ assert.ok(head.includes(`rel="canonical" href="${canonical}"`), route + ': canonical');
+ assert.ok(/<div id="root" data-prerendered="true">/.test(html), route + ': built content marker');
+ assert.ok(/<h1(?:\s|>)/.test(html), route + ': heading in response HTML');
+ const data = html.match(/<script id="public-content" type="application\/json">([\s\S]*?)<\/script>/)?.[1];
+ assert.ok(data, route + ': hydration data'); JSON.parse(data);
+ assert.ok(!/style="[^"]*opacity:0(?:;|")/.test(html), route + ': important content visible before JS');
+ const signature = html.match(/<div id="root" data-prerendered="true">([\s\S]*?)<script id="public-content"/)?.[1] || html;
+ if (seen.has(signature)) assert.equal(meta.canonicalPath, seen.get(signature), route + ': duplicate content must be an explicit canonical alias');
+ seen.set(signature, route);
+ console.info('PASS public HTML', route);
+}
+const app = await fs.readFile('dist/app.html','utf8');
+assert.ok(app.includes('noindex,nofollow') && !app.includes('data-prerendered="true"'), 'private routes retain an empty noindex client shell');
+console.info('PASS private shell and route metadata');

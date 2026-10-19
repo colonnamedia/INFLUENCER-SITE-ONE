@@ -1,3 +1,4 @@
+import { usePublicContent } from '../PublicContent.jsx';
 import HomepagePhotos from '../HomepagePhotos.jsx';
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -25,7 +26,8 @@ const CREATOR_STATS = [
 ]
 
 export default function Home() {
-  const [links, setLinks] = useState([])
+  const initialContent = usePublicContent();
+  const [links, setLinks] = useState(initialContent.links)
   useEffect(() => { api.getLinks().then(setLinks) }, [])
 
   const pinned = links.filter((l) => l.pinned).slice(0, 2)

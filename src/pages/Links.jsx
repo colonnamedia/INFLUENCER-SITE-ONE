@@ -1,10 +1,12 @@
+import { usePublicContent } from '../PublicContent.jsx';
 import { useEffect, useState } from 'react'
 import { CREATOR } from '../lib/seed.js'
 import { api } from '../lib/api.js'
 import { PinnedCard, LinkRow } from '../components/LinkCard.jsx'
 
 export default function Links() {
-  const [links, setLinks] = useState(null)
+  const initialContent = usePublicContent();
+  const [links, setLinks] = useState(initialContent.links)
   useEffect(() => { api.getLinks().then(setLinks) }, [])
 
   const pinned = (links || []).filter((l) => l.pinned)
